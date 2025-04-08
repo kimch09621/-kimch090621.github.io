@@ -1,12 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1학년 1~4반 성적 그래프</title>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #dbe8fc;
+            text-align: center;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .chart-container {
+            width: 40%;
+            height: 500px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-  <p>Hello, World!</p>
+
+    <h1>1학년 1~4반 성적 그래프</h1>
+
+    <!-- 차트를 그릴 canvas 요소 -->
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        // 차트 데이터를 설정합니다.
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar', // 그래프 종류 (bar, line, pie 등)
+            data: {
+                labels: ['1반 성적', '2반 성적', '3반 성적', '4반 성적', ], // X축 레이블
+                datasets: [{
+                    label: '반 성적 ',
+                    data: [10, 25, 50, 75, 100], // Y축 값
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true // Y축이 0부터 시작
+                    }
+                }
+            }
+        });
+    </script>
+
 </body>
 </html>
